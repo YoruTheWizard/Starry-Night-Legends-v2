@@ -1,0 +1,33 @@
+<%- include('includes/head') %>
+<link rel="stylesheet" href="/styles/viewer.css">
+<title><%= chap.titleName %> - Capítulo <%= chap.number %></title>
+<body>
+  <section class="container">
+    <%- include('includes/header') %>
+        <%- include('includes/home-btn') %>
+    <p id="file-id" hidden><%= chap.file %></p>
+
+    <div class="content">
+
+      <div class="top-bar">
+        <button class="btn" id="prev-page" title="Página anterior">
+          <ion-icon name="chevron-back-outline"></ion-icon>
+          Ant
+        </button>
+        <span id="page-info">
+          Página <input type="number" id="page-num" min="1"> de <span id="page-count"></span>
+        </span>
+        <button class="btn" id="next-page" title="Próxima página">
+          Próx
+          <ion-icon name="chevron-forward-outline"></ion-icon>
+        </button>
+      </div>
+      
+      <canvas id="pdf-render"></canvas>
+
+    </div>
+  </section>
+  
+  <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+  <script src="/js/pdfDisplay.js"></script>
+  <%- include('includes/footer') %>

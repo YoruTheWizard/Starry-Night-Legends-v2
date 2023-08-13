@@ -1,0 +1,56 @@
+.content {
+  display: flex;
+  justify-content: center;
+  gap: 20%;
+}
+
+h2 {
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  min-width: 16em;
+  width: 20vw;
+  margin: 0 auto 2em;
+}
+
+.form label:not(:first-of-type) {
+  margin-top: 1em;
+}
+
+select {
+  cursor: pointer;
+}
+
+.input[type="file"] {
+  font-size: 1.5rem;
+  font-family: serif;
+  height: 4em;
+  padding: 0;
+}
+
+.input[type="file"]::file-selector-button {
+  font-size: 1.5rem;
+  height: 2em;
+  padding: .1em 1em;
+  margin: .5em .5em 0 .5em;
+  z-index: 5;
+}
+
+.btns {
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+  margin: 1em auto 0;
+  width: 100%;
+}
+
+.single-btn {
+  justify-content: center;
+}
+
+#chap-form .btns {
+  margin-top: 0;
+}

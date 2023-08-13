@@ -1,0 +1,52 @@
+.top-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  padding: 0 1em 1em;
+}
+
+.btn {
+  display: flex;
+  justify-content: space-between;
+  font-size: 2rem;
+  padding: .15em .5em .1em;
+  height: 1.5em;
+}
+
+.btn ion-icon {
+  height: 1.2em;
+}
+
+#prev-page {
+  padding-left: .1em;
+}
+
+#next-page {
+  padding-right: .1em;
+}
+
+#page-info {
+  padding-top: .1em;
+}
+
+#page-num {
+  -moz-appearance: textfield;
+  appearance: textfield;
+  font-size: 2rem;
+  font-family: serif;
+  text-align: center;
+  width: 2em;
+}
+
+#page-num::-webkit-outer-spin-button,
+#page-num::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#pdf-render {
+  display: block;
+  margin: 0 auto 3.45em;
+  box-shadow: 0 0 8px rgba(0, 0, 0, .3);
+}

@@ -1,0 +1,56 @@
+<%- include('includes/head') %>
+<link rel="stylesheet" href="/styles/form.css">
+<title>Admin area</title>
+</head>
+<body>
+  <section class="container">
+    <%- include('includes/header') %>
+    <%- include('includes/home-btn') %>
+    <div class="content">
+      <div>
+        <h2>Adicionar obra</h2>
+        <form action="/titles/create" method="post" class="form" id="title-form">
+          <label for="title-name">Nome da obra</label>
+          <input type="text" name="name" id="title-name" class="input" autocomplete="off" required placeholder="Digite o nome da obra">
+
+          <label for="description">Sinopse</label>
+          <textarea name="description" id="description" class="input textarea" placeholder="Escreva a sinopse" required></textarea>
+
+          <div class="btns single-btn">
+            <button type="submit" class="btn submit-btn">Enviar</button>
+          </div>
+        </form>
+      </div>
+
+      <% if (titles) { %>
+        <div>
+          <h2>Adicionar capítulo</h2>
+          <form action="/files/upload" method="post" class="form" id="chap-form" enctype="multipart/form-data">
+            <label for="name">Nome do capítulo</label>
+            <input type="text" name="name" id="name" class="input" autocomplete="off" required placeholder="Digite o nome do capítulo">
+
+            <label for="title">Livro</label>
+            <select name="titleName" id="title" autocomplete="off" required>
+              <option selected disabled hidden value="">Escolha um livro</option>
+              <% for (let title of titles) { %>
+                <option value="<%= title.name %>"><%= title.displayName %></option>
+              <% } %>
+            </select>
+
+            <label for="chapter">Número do capítulo</label>
+            <input type="number" step="0.1" min="0" name="number" id="chapter" class="input" autocomplete="off" required placeholder="Digite um número">
+
+            <label for="file">Escolha um arquivo</label>
+            <input type="file" accept=".pdf" name="file" id="file" class="input input-file" autocomplete="off" required>
+
+            <div class="btns">
+              <button type="reset" class="btn reset-btn">Limpar</button>
+              <button type="submit" class="btn submit-btn" id="submit-file">Enviar</button>
+            </div>
+          </form>
+        </div>
+      <% } %>
+    </div>
+  </section>
+
+<%- include('includes/footer') %>

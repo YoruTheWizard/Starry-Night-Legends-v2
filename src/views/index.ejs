@@ -1,0 +1,74 @@
+<%- include('includes/head') %>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles/home.css">
+<title>Starry Night Legends - Home</title>
+</head>
+<body>
+  <section class="container">
+    <%- include('includes/header') %>
+    <div class="content">
+      <div class="text">
+        <h2>Bem vindo!</h2>
+        <p>
+           Olá, sou YoruTheWizard, mas pode me chamar de Yoru. 
+            Inicialmente a ideia desse site era para "publicar" uma história que começei a fazer a algum tempo, 
+            Mas talvez eu faça mais histórias no futuro <span class="italic">já que tenho várias ideias para histórias planejadas haha</span>, 
+            portanto cada história que eu criar vou estar postando aqui para quem estiver acessando este site poder ver.
+            Enfim, não me considero um bom escritor, mas espero que goste de minhas histórias. Os links para acessá-las estão disponíveis abaixo.
+            Caso queira falar algo sobre as histórias, como sugestões <span class="italic">ou elogios</span> pode enviar uma mensagem para <a href="mailto:yoruthewizard@gmail.com" class="text-link underlined">yoruthewizard@gmail.com</a>.
+            <span hidden>(</span>Tenha uma boa leitura! ;)
+        </p>
+    </div>
+      <h2>Livros</h2>
+      <div class="titles">
+        <% if (titles) { %>
+          <% for (let title of titles) { %>
+            <div class="title">
+              <details class="title-name">
+                <summary>
+                  <%= title.displayName %>
+                  <ion-icon class="name-arrow" name="caret-forward-outline"></ion-icon>
+                </summary>
+              </details>
+              <div class="title-content">
+                <div class="title-desc-content">
+                  <details class="title-desc">
+                    <summary>
+                      Sinópse
+                      <ion-icon class="desc-arrow" name="caret-forward-outline"></ion-icon>
+                    </summary>
+                  </details>
+                  <p class="title-desc-p <%if(title.description === 'Sem descrição'){%>unavailable<%}%>" >
+                    <%= title.description %>
+                  </p>
+                </div>
+                <div class="chapters">
+                  <% if (title.chapters) { %>
+                    <ul>
+                      <% for (let chapter of title.chapters) { %>
+                        <li class="chapter">
+                          <a href="/titles/<%= title.name %>/<%= chapter.number %>">
+                            Capítulo <%= chapter.number %> - <%= chapter.name %>
+                          </a>
+                          <p class="date"></p>
+                          <p class="db-date" hidden><%= chapter.uploadDate %></p>
+                        </li>
+                      <% } %>
+                    </ul>
+                  <% } else { %>
+                    <p class="unavailable">Nenhum capítulo disponível no momento...</p>
+                  <% } %>
+                </div>
+              </div>
+            </div>
+          <% } %>
+        <% } else { %>
+          <p class="unavailable">Não há livros disponíveis...</p>
+        <% } %>
+      </div>
+    </div>
+  </section>
+  <script src="/js/home.js"></script>
+  <%- include('includes/footer') %>

@@ -1,0 +1,10 @@
+:root {
+  --background: #242424 !important;
+  --main-text: #fff !important;
+  --text-lighter: #ccc !important;
+  --btn-shadow: #151515 !important;
+}
+
+.dmb-icon {
+  transform: translateX(2.1em);
+}

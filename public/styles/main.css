@@ -1,0 +1,173 @@
+:root {
+  --background: #f6f5f4;
+  --main-color: #1c28a6;
+  --main-dark: #111866;
+  --main-text: #000;
+  --inner-text: #fff;
+  --text-lighter: #aaa;
+  --btn-bg: #293af2;
+  --btn-shadow: #aaa;
+  --dmb-shadow: #1515158e;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 2rem;
+  color: var(--main-text);
+  background-color: var(--background);
+}
+
+/* || CONTENT || */
+
+.header {
+  user-select: none;
+  -webkit-user-drag: none;
+  color: var(--inner-text);
+  background-color: var(--main-color);
+  height: 5em;
+  padding-top: 1.3em;
+}
+
+.header h1 {
+  font-size: 4rem;
+  text-align: center;
+}
+
+.content {
+  position: relative;
+  width: 70vw;
+  margin: 3em auto;
+}
+
+h2 {
+  margin-bottom: .5em;
+}
+
+.italic {
+  font-style: italic;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.underlined {
+  text-decoration: underline;
+}
+
+.unavailable {
+  color: var(--text-lighter);
+  font-style: italic;
+}
+
+a {
+  color: var(--main-text);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+*::placeholder {
+  color: var(--text-lighter);
+}
+
+input:not(input[type="file"]),
+textarea,
+select {
+  font-size: 1.5rem;
+  font-family: serif;
+  color: var(--main-text);
+  background: none;
+  border: 2px solid var(--main-text);
+  border-radius: .5em;
+  padding: .1em .5em;
+  height: 2em;
+}
+
+input:not(input[type="file"]):focus,
+textarea:focus,
+select:focus {
+  border-color: var(--btn-bg);
+}
+
+textarea {
+  resize: none;
+  height: 6.9em;
+}
+
+.btn,
+.input[type="file"]::file-selector-button {
+  cursor: pointer;
+  font-size: 1.8rem;
+  font-family: serif;
+  font-weight: bold;
+  background-color: var(--btn-bg);
+  color: var(--inner-text);
+  border: none;
+  border-radius: 1em;
+  padding: .2em 2em;
+}
+
+.btn:hover,
+.input[type="file"]::file-selector-button:hover {
+  box-shadow: 0 0 .2em var(--btn-shadow);
+}
+
+.home-btn {
+  position: absolute;
+  font-size: 2rem;
+  padding: .2em .5em 0;
+  top: 5.8em;
+  left: calc(50% - 1em);
+  width: fit-content;
+  height: fit-content;
+}
+
+.home-btn a {
+  color: var(--inner-text);
+  height: 1.2em;
+}
+
+/* | DARK MODE | */
+
+.dark-mode-btn {
+  cursor: pointer;
+  position: absolute;
+  font-size: 2rem;
+  color: var(--inner-text);
+  background-color: var(--main-dark);
+  border-radius: 5em;
+  box-shadow: inset 0 0 .2em var(--dmb-shadow);
+  top: 1.5em;
+  right: 3em;
+  width: 4em;
+  height: 1.9em;
+  padding: .3em;
+}
+
+.dmb-icon {
+  background-color: var(--main-color);
+  border-radius: 50%;
+  box-shadow: 0 0 .2em var(--dmb-shadow);
+  padding: .1em;
+  height: 1.1em;
+  width: 1.1em;
+  transition-duration: .2s;
+  transition-timing-function: ease-in-out;
+}
