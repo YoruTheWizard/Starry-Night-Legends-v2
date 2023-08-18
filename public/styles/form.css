@@ -1,6 +1,7 @@
 .content {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 20%;
 }
 
@@ -53,4 +54,28 @@ select {
 
 #chap-form .btns {
   margin-top: 0;
+}
+
+/* || TITLES DISPLAY || */
+
+.titles {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: nowrap !important;
+}
+
+.title-actions {
+  display: flex;
+  justify-content: center;
+  gap: 1em;
+  margin-top: 1em;
+}
+
+.delete-title {
+  background-color: var(--btn-danger);
+}
+
+.title-desc-content {
+  margin: 0 !important;
 }

@@ -8,6 +8,7 @@
   --btn-bg: #293af2;
   --btn-shadow: #aaa;
   --dmb-shadow: #1515158e;
+  --btn-danger: #a00;
 }
 
 *,
@@ -34,6 +35,7 @@ body {
 /* || CONTENT || */
 
 .header {
+  -webkit-user-select: none;
   user-select: none;
   -webkit-user-drag: none;
   color: var(--inner-text);

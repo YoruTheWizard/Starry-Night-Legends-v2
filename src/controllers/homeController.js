@@ -20,7 +20,23 @@ const index = async (req, res) => { // Renders home page
   }
 };
 
-const adminAuth = (req, res) => res.render('admin-auth');
+const adminAuth = async (req, res) => {
+  const titles = await Title.readAll();
+  if (!titles || titles.length === 0)
+    return res.render('admin', { titles: false });
+  else {
+    for (let title of titles) {
+      const chapters = await Chapter.readByTitleName(title.name);
+
+      if (chapters && chapters.length > 0)
+        title.chapters = chapters;
+      else title.chapters = false;
+    }
+    return res.render('admin', { titles });
+  }
+}
+
+//const adminAuth = (req, res) => res.render('admin-auth');
 
 const admin = async (req, res) => { // Renders admin page
   const password = req.body.password;

@@ -1,0 +1,138 @@
+/* || TITLES || */
+
+.titles {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 1em;
+}
+
+.title {
+    position: relative;
+}
+
+/* | TITLE NAME | */
+
+.title-name {
+    position: absolute;
+    border-radius: 1em;
+    box-shadow: 0 0 .2em var(--btn-shadow);
+    width: 25em;
+    margin-bottom: 1em;
+}
+
+.title-name summary {
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: .5em;
+    border-radius: 1em;
+    padding: .5em;
+}
+
+.name-arrow,
+.desc-arrow {
+    transition: rotate .2s;
+}
+
+.title-name[open] .name-arrow,
+.title-desc[open] .desc-arrow {
+    rotate: 90deg;
+}
+
+/* | TITLE CONTENT | */
+
+.title-content {
+    border-radius: 1em;
+    box-shadow: 0 0 .2em var(--btn-shadow);
+    width: 25em;
+    max-height: 2.2em;
+    overflow: hidden;
+    padding: 1.7em .5em .5em;
+    transition: max-height .5s;
+}
+
+.title-name[open]+.title-content {
+    max-height: 15em;
+}
+
+/* TITLE SYNOPSIS */
+
+.title-desc-content {
+    position: relative;
+    border-bottom: 2px solid var(--main-text);
+    margin-top: 1em;
+}
+
+.title-desc {
+    cursor: pointer;
+    position: absolute;
+    display: flex;
+    width: 100%;
+}
+
+.title-desc summary {
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+.title-desc summary:hover {
+    text-decoration: underline;
+}
+
+.title-desc-p {
+    max-height: 1em;
+    padding-top: 1.3em;
+    overflow: hidden;
+    transition: all .5s;
+}
+
+.title-desc[open]+.title-desc-p {
+    max-height: 5em;
+    margin-bottom: .3em;
+    transition: all .5s;
+}
+
+/* CHAPTERS */
+
+.chapters {
+    max-height: 10em;
+    overflow-y: auto;
+    margin-top: .5em;
+}
+
+.chapter {
+    list-style: none;
+}
+
+.date {
+    font-size: 1.7rem;
+    color: var(--text-lighter);
+}
+
+/* || ANIMATIONS || */
+
+@keyframes typing {
+    from {
+        width: 0
+    }
+
+    to {
+        width: 6.9em
+    }
+}
+
+@keyframes blink-caret {
+
+    from,
+    to {
+        border-color: transparent
+    }
+
+    50% {
+        border-color: var(--main-text);
+    }
+}

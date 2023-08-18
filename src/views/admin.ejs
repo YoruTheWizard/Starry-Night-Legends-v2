@@ -1,13 +1,15 @@
 <%- include('includes/head') %>
 <link rel="stylesheet" href="/styles/form.css">
+<link rel="stylesheet" href="/styles/title-display.css">
 <title>Admin area</title>
 </head>
+
 <body>
   <section class="container">
     <%- include('includes/header') %>
     <%- include('includes/home-btn') %>
     <div class="content">
-      <div>
+      <div class="create-title">
         <h2>Adicionar obra</h2>
         <form action="/titles/create" method="post" class="form" id="title-form">
           <label for="title-name">Nome da obra</label>
@@ -23,34 +25,92 @@
       </div>
 
       <% if (titles) { %>
-        <div>
-          <h2>Adicionar capítulo</h2>
-          <form action="/files/upload" method="post" class="form" id="chap-form" enctype="multipart/form-data">
-            <label for="name">Nome do capítulo</label>
-            <input type="text" name="name" id="name" class="input" autocomplete="off" required placeholder="Digite o nome do capítulo">
+      <div class="create-chapter">
+        <h2>Adicionar capítulo</h2>
+        <form action="/files/upload" method="post" class="form" id="chap-form" enctype="multipart/form-data">
+          <label for="name">Nome do capítulo</label>
+          <input type="text" name="name" id="name" class="input" autocomplete="off" required placeholder="Digite o nome do capítulo">
 
-            <label for="title">Livro</label>
-            <select name="titleName" id="title" autocomplete="off" required>
-              <option selected disabled hidden value="">Escolha um livro</option>
-              <% for (let title of titles) { %>
-                <option value="<%= title.name %>"><%= title.displayName %></option>
-              <% } %>
-            </select>
+          <label for="title">Livro</label>
+          <select name="titleName" id="title" autocomplete="off" required>
+            <option selected disabled hidden value="">Escolha um livro</option>
+            <% for (let title of titles) { %>
+            <option value="<%= title.name %>"><%= title.displayName %></option>
+            <% } %>
+          </select>
 
-            <label for="chapter">Número do capítulo</label>
-            <input type="number" step="0.1" min="0" name="number" id="chapter" class="input" autocomplete="off" required placeholder="Digite um número">
+          <label for="chapter">Número do capítulo</label>
+          <input type="number" step="0.1" min="0" name="number" id="chapter" class="input" autocomplete="off" required placeholder="Digite um número">
 
-            <label for="file">Escolha um arquivo</label>
-            <input type="file" accept=".pdf" name="file" id="file" class="input input-file" autocomplete="off" required>
+          <label for="file">Escolha um arquivo</label>
+          <input type="file" accept=".pdf" name="file" id="file" class="input input-file" autocomplete="off" required>
 
-            <div class="btns">
-              <button type="reset" class="btn reset-btn">Limpar</button>
-              <button type="submit" class="btn submit-btn" id="submit-file">Enviar</button>
-            </div>
-          </form>
-        </div>
+          <div class="btns">
+            <button type="reset" class="btn reset-btn">Limpar</button>
+            <button type="submit" class="btn submit-btn" id="submit-file">Enviar</button>
+          </div>
+        </form>
+      </div>
       <% } %>
+      <div class="titles-display">
+        <h2>Livros</h2>
+        <div class="titles">
+          <% if (titles) { %>
+          <% for (let title of titles) { %>
+          <div class="title">
+            <details class="title-name">
+              <summary>
+                <%= title.displayName %>
+                <ion-icon class="name-arrow" name="caret-forward-outline"></ion-icon>
+              </summary>
+            </details>
+            <div class="title-content">
+              <div class="title-actions">
+                <button class="btn edit-btn">
+                  <ion-icon name="create-outline"></ion-icon>
+                </button>
+                <button class="btn delete-title">
+                  <ion-icon name="trash-outline"></ion-icon>
+                </button>
+              </div>
+              <div class="title-desc-content">
+                <details class="title-desc">
+                  <summary>
+                    Sinópse
+                    <ion-icon class="desc-arrow" name="caret-forward-outline"></ion-icon>
+                  </summary>
+                </details>
+                <p class="title-desc-p <%if(title.description === 'Sem descrição'){%>unavailable<%}%>" >
+                      <%= title.description %>
+                    </p>
+                  </div>
+                  <div class=" chapters">
+                  <% if (title.chapters) { %>
+                <ul>
+                  <% for (let chapter of title.chapters) { %>
+                  <li class="chapter">
+                    <a href="/titles/<%= title.name %>/<%= chapter.number %>">
+                      Capítulo <%= chapter.number %> - <%= chapter.name %>
+                    </a>
+                    <p class="date"></p>
+                    <p class="db-date" hidden><%= chapter.uploadDate %></p>
+                  </li>
+                  <% } %>
+                </ul>
+                <% } else { %>
+                <p class="unavailable">Nenhum capítulo disponível no momento...</p>
+                <% } %>
+              </div>
+            </div>
+          </div>
+          <% } %>
+          <% } else { %>
+          <p class="unavailable">Não há livros disponíveis...</p>
+          <% } %>
+        </div>
+      </div>
     </div>
   </section>
 
-<%- include('includes/footer') %>
+  <script src="/js/home.js"></script>
+  <%- include('includes/footer') %>
