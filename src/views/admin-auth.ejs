@@ -1,6 +1,9 @@
 <%- include('includes/head') %>
 <style>
-  h2 { text-align: center; }
+  h2 {
+    text-align: center;
+  }
+
   #admin-form {
     display: block;
     margin: 0 auto;
@@ -13,7 +16,7 @@
 <section class="container">
   <div class="content">
     <h2>Autenticação necessária!</h2>
-    <form action="/admin" method="post" class="form" id="admin-form">
+    <form action="/admin/auth" method="post" class="form" id="admin-form">
       <input type="password" name="password" class="input" id="password" required placeholder="Insira a senha">
       <button type="submit" class="btn submit-btn">Entrar</button>
     </form>

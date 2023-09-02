@@ -8,71 +8,38 @@
   <section class="container">
     <%- include('includes/header') %>
     <%- include('includes/home-btn') %>
+
+    <%- include('includes/modals/title') %>
+    <%- include('includes/modals/chapter') %>
+    <%- include('includes/modals/delete') %>
+
     <div class="content">
-      <div class="create-title">
-        <h2>Adicionar obra</h2>
-        <form action="/titles/create" method="post" class="form" id="title-form">
-          <label for="title-name">Nome da obra</label>
-          <input type="text" name="name" id="title-name" class="input" autocomplete="off" required placeholder="Digite o nome da obra">
-
-          <label for="description">Sinopse</label>
-          <textarea name="description" id="description" class="input textarea" placeholder="Escreva a sinopse" required></textarea>
-
-          <div class="btns single-btn">
-            <button type="submit" class="btn submit-btn">Enviar</button>
-          </div>
-        </form>
-      </div>
-
-      <% if (titles) { %>
-      <div class="create-chapter">
-        <h2>Adicionar capítulo</h2>
-        <form action="/files/upload" method="post" class="form" id="chap-form" enctype="multipart/form-data">
-          <label for="name">Nome do capítulo</label>
-          <input type="text" name="name" id="name" class="input" autocomplete="off" required placeholder="Digite o nome do capítulo">
-
-          <label for="title">Livro</label>
-          <select name="titleName" id="title" autocomplete="off" required>
-            <option selected disabled hidden value="">Escolha um livro</option>
-            <% for (let title of titles) { %>
-            <option value="<%= title.name %>"><%= title.displayName %></option>
-            <% } %>
-          </select>
-
-          <label for="chapter">Número do capítulo</label>
-          <input type="number" step="0.1" min="0" name="number" id="chapter" class="input" autocomplete="off" required placeholder="Digite um número">
-
-          <label for="file">Escolha um arquivo</label>
-          <input type="file" accept=".pdf" name="file" id="file" class="input input-file" autocomplete="off" required>
-
-          <div class="btns">
-            <button type="reset" class="btn reset-btn">Limpar</button>
-            <button type="submit" class="btn submit-btn" id="submit-file">Enviar</button>
-          </div>
-        </form>
-      </div>
-      <% } %>
+      <h1>Área do adminisrtador</h1>
       <div class="titles-display">
         <h2>Livros</h2>
         <div class="titles">
+          <button class="btn" id="create-title-btn" title="Adicionar obra">
+            <ion-icon name="add-circle-outline"></ion-icon>
+            <div id="ctb-cover"></div>
+          </button>
           <% if (titles) { %>
           <% for (let title of titles) { %>
-          <div class="title">
-            <details class="title-name">
+          <div class="title admin-title">
+            <details class="title-name" open>
               <summary>
                 <%= title.displayName %>
-                <ion-icon class="name-arrow" name="caret-forward-outline"></ion-icon>
+                <div class="title-actions">
+                  <button class="btn admin-btn edit-btn">
+                    <ion-icon name="create-outline"></ion-icon>
+                  </button>
+                  <button class="btn admin-btn delete-title">
+                    <ion-icon name="trash-outline"></ion-icon>
+                  </button>
+                  <ion-icon class="name-arrow" name="caret-forward-outline"></ion-icon>
+                </div>
               </summary>
             </details>
             <div class="title-content">
-              <div class="title-actions">
-                <button class="btn edit-btn">
-                  <ion-icon name="create-outline"></ion-icon>
-                </button>
-                <button class="btn delete-title">
-                  <ion-icon name="trash-outline"></ion-icon>
-                </button>
-              </div>
               <div class="title-desc-content">
                 <details class="title-desc">
                   <summary>
@@ -80,20 +47,36 @@
                     <ion-icon class="desc-arrow" name="caret-forward-outline"></ion-icon>
                   </summary>
                 </details>
-                <p class="title-desc-p <%if(title.description === 'Sem descrição'){%>unavailable<%}%>" >
-                      <%= title.description %>
-                    </p>
-                  </div>
-                  <div class=" chapters">
-                  <% if (title.chapters) { %>
+                <% if (title.description === '') { %>
+                <p class="title-desc-p unavailable">
+                  Sem descrição
+                </p>
+                <% } else { %>
+                <p class="title-desc-p ">
+                  <%= title.description %>
+                </p>
+                <% } %>
+              </div>
+              <div class=" chapters">
+                <% if (title.chapters) { %>
                 <ul>
                   <% for (let chapter of title.chapters) { %>
-                  <li class="chapter">
-                    <a href="/titles/<%= title.name %>/<%= chapter.number %>">
-                      Capítulo <%= chapter.number %> - <%= chapter.name %>
-                    </a>
-                    <p class="date"></p>
-                    <p class="db-date" hidden><%= chapter.uploadDate %></p>
+                  <li class="chapter admin-chapter">
+                    <div class="chapter-title">
+                      <a href="/titles/<%= title.name %>/<%= chapter.number %>">
+                        Capítulo <%= chapter.number %> - <%= chapter.name %>
+                      </a>
+                      <p class="date"></p>
+                      <p class="db-date" hidden><%= chapter.uploadDate %></p>
+                    </div>
+                    <div class="chap-actions">
+                      <button class="btn admin-btn edit-btn">
+                        <ion-icon name="create-outline"></ion-icon>
+                      </button>
+                      <button class="btn admin-btn delete-title">
+                        <ion-icon name="trash-outline"></ion-icon>
+                      </button>
+                    </div>
                   </li>
                   <% } %>
                 </ul>
@@ -112,5 +95,5 @@
     </div>
   </section>
 
-  <script src="/js/home.js"></script>
+  <script src="/js/window-events.js"></script>
   <%- include('includes/footer') %>

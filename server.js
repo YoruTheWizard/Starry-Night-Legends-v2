@@ -1,16 +1,22 @@
 require('dotenv').config();
+const path = require('path');
+
+// EXPRESS
 const express = require('express');
 const app = express();
-const path = require('path');
 const port = 3000;
 const router = require(path.resolve(__dirname, 'src', 'routes', 'router'));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 // DATABASE
 const mongo = require(path.resolve(__dirname, 'src', 'database', 'mongodb'));
 
-// MIDDLEWARES
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+// SESSION
+// const { sessionUser } = require(path.resolve(__dirname, 'src', 'middlewares', 'sessionMiddleware'));
+const { sessionUser } = require('./src/middlewares/sessionMiddleware');
+app.use(mongo.sessionOptions);
+app.use(sessionUser);
 
 // STATIC
 app.set('views', 'src/views');

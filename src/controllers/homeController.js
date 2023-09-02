@@ -20,7 +20,7 @@ const index = async (req, res) => { // Renders home page
   }
 };
 
-const adminAuth = async (req, res) => {
+const admin = async (req, res) => { // Renders admin page
   const titles = await Title.readAll();
   if (!titles || titles.length === 0)
     return res.render('admin', { titles: false });
@@ -34,23 +34,31 @@ const adminAuth = async (req, res) => {
     }
     return res.render('admin', { titles });
   }
-}
+};
 
-//const adminAuth = (req, res) => res.render('admin-auth');
+const adminAuthIndex = (req, res) =>  // Renders authentication page
+  res.render('admin-auth');
 
-const admin = async (req, res) => { // Renders admin page
+const adminAuth = async (req, res) => { // Authenticates admin user
   const password = req.body.password;
   if (password === process.env.ADMIN_PASSWORD) {
-    const titles = await Title.readAll();
-    if (!titles || titles.length === 0)
-      return res.render('admin', { titles: false });
-    return res.render('admin', { titles });
+    req.session.user = 'admin';
+    req.session.save(() => res.redirect('/admin'));
+    return;
   }
-  return res.redirect('back');
+  req.session.save(() => res.redirect('back'));
+  return;
+};
+
+const logout = (req, res) => {
+  req.session.destroy();
+  return res.redirect('/');
 };
 
 module.exports = {
   index,
   admin,
-  adminAuth
+  adminAuth,
+  adminAuthIndex,
+  logout
 };

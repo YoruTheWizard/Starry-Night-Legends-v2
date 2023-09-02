@@ -1,4 +1,10 @@
 <div class="header">
+  <% if (user) { %>
+  <div class="user-links">
+    <a href="/admin">Admin page</a>
+    <a href="/admin/logout">Logout</a>
+  </div>
+  <% } %>
   <h1>Starry Night Legends</h1>
   <div class="dark-mode-btn" title="Alterar tema">
     <ion-icon class="dmb-icon" name="moon-outline"></ion-icon>

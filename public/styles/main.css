@@ -40,8 +40,22 @@ body {
   -webkit-user-drag: none;
   color: var(--inner-text);
   background-color: var(--main-color);
+  justify-content: space-between;
   height: 5em;
   padding-top: 1.3em;
+}
+
+.user-links {
+  position: absolute;
+  display: flex;
+  gap: 2em;
+  width: fit-content;
+  top: 1.8em;
+  left: 3em;
+}
+
+.user-links a {
+  color: var(--inner-text);
 }
 
 .header h1 {

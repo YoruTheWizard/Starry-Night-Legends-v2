@@ -41,6 +41,21 @@ const storage = new GridFsStorage({
 });
 const upload = multer({ storage });
 
+// Session
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
+
+const sessionOptions = session({
+  secret: 'ambar',
+  store: new MongoStore({ mongoUrl: env.ATLASDB_CONN }),
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 24 * 7,
+    httpOnly: true
+  }
+});
+
 const getMongoose = () => {
   if (!connected) connect();
   return mongoose;
@@ -50,5 +65,6 @@ module.exports = {
   dbConn,
   connect,
   upload,
+  sessionOptions,
   getMongoose
 };
