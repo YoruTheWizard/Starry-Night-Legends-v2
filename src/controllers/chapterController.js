@@ -5,6 +5,8 @@ const Chapter = require('../models/ChapterModel');
 
 // GRIDFS
 const mongo = require('../database/mongodb');
+const { ObjectId } = require('mongodb');
+
 // const mongo = require(path.resolve(__dirname, '..', 'database', 'mongodb'));
 let gfs, bucket;
 let mongoose = mongo.getMongoose();
@@ -69,7 +71,7 @@ const upload = async (req, res) => { // Uploads a file into database
     chap.body.file = req.file.id;
     await chap.create(); // Creating instance in database
 
-    return res.status(200).redirect('/upload');
+    return res.status(200).redirect('/admin');
   } catch (e) {
     console.error(e);
     return res.status(500).render('err/500');
@@ -77,13 +79,18 @@ const upload = async (req, res) => { // Uploads a file into database
 };
 
 const destroy = async (req, res) => { // Deletes a file
-  let id = req.params.id;
-  const chapter = Chapter.deleteByFileId(id); // Removing chapter from database
-  console.log(chapter);
-  gfs.remove({ _id: id, root: 'chapters' }, err => { // Removing file from database
-    if (err) return res.status(500).json({ err: err });
-    res.redirect('/');
-  });
+  try {
+    let id = req.params.id;
+    const chapter = await Chapter.delete(id); // Removing chapter from database
+
+    const file = chapter.file;
+    bucket.delete(new ObjectId(file));
+
+    return res.status(200).redirect('/admin');
+  } catch (e) {
+    console.log(e);
+    return res.status(500).render('err/500');
+  }
 };
 
 module.exports = {

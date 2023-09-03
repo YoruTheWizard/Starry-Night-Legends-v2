@@ -28,5 +28,5 @@ app.use(router);
 
 // SERVER
 mongo.connect().then(() => app.listen(port, () =>
-  console.log(`Server listening on port ${port}`)
+  console.log(`Server listening on port ${port}\nAccess: http://localhost:${port}`)
 ));

@@ -1,0 +1,27 @@
+<div class="modal-display" hidden>
+  <div class="modal create-chapter">
+    <% if (titles) { %>
+    <h2 id="chapter-form-title">Adicionar capítulo</h2>
+    <form action="/files/upload" method="post" class="form" id="chap-form" enctype="multipart/form-data">
+      <label for="name">Nome do capítulo</label>
+      <input type="text" name="name" id="name" class="input" autocomplete="off" required placeholder="Digite o nome do capítulo">
+
+      <label>Livro: <span id="chapter-title-name"></span></label>
+      <input type="hidden" name="titleName" id="title" required>
+
+      <label for="chapter">Número do capítulo</label>
+      <input type="number" step="0.1" min="0" name="number" id="chapter" class="input" autocomplete="off" required placeholder="Digite um número">
+
+      <label for="file">Escolha um arquivo</label>
+      <input type="file" accept=".pdf" name="file" id="file" class="input input-file" autocomplete="off" required>
+
+      <div class="btns">
+        <button type="button" class="btn reset-btn" id="chapter-form-reset">Limpar</button>
+        <button type="submit" class="btn submit-btn" id="submit-file">Enviar</button>
+      </div>
+    </form>
+    <% } else { %>
+    <p>Não há títulos disponíveis! Crie um título primeiro!</p>
+    <% } %>
+  </div>
+</div>

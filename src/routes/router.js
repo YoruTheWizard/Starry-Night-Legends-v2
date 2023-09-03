@@ -21,6 +21,8 @@ Admin.get('/logout', home.logout);
 const Titles = express.Router();
 Titles.get('/:title/:chapter', chapter.readFile);
 Titles.post('/create', title.create);
+Titles.post('/edit/:id', title.update);
+Titles.post('/delete/:id', title.destroy);
 
 // File routes
 const Files = express.Router();

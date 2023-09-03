@@ -1,8 +1,25 @@
-.content {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 20%;
+.modal-display {
+  position: absolute;
+  background-color: #0003;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: 5;
+}
+
+.modal {
+  position: absolute;
+  background-color: var(--background);
+  border-radius: 1em;
+  top: calc(50% - 10em);
+  left: calc(50% - 10em);
+  padding: 1em;
+}
+
+h1:not(.header h1) {
+  font-size: 3.5rem;
+  text-align: center;
+  margin-bottom: 1em;
 }
 
 h2 {
@@ -14,15 +31,15 @@ h2 {
   flex-direction: column;
   min-width: 16em;
   width: 20vw;
-  margin: 0 auto 2em;
+  margin: 0 auto;
 }
 
 .form label:not(:first-of-type) {
   margin-top: 1em;
 }
 
-select {
-  cursor: pointer;
+#chapter-title-name {
+  font-style: italic;
 }
 
 .input[type="file"] {
@@ -63,19 +80,4 @@ select {
   flex-direction: column;
   justify-content: center;
   flex-wrap: nowrap !important;
-}
-
-.title-actions {
-  display: flex;
-  justify-content: center;
-  gap: 1em;
-  margin-top: 1em;
-}
-
-.delete-title {
-  background-color: var(--btn-danger);
-}
-
-.title-desc-content {
-  margin: 0 !important;
 }

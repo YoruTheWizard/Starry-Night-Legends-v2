@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const TitleSchema = new mongoose.Schema({
   name: { type: String, required: true },
   displayName: String,
-  description: { type: String, default: 'Sem descrição' }
+  description: { type: String, default: '' }
 });
 
 const TitleModel = mongoose.model('Title', TitleSchema);

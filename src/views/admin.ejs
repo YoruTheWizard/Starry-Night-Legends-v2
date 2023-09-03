@@ -1,5 +1,5 @@
 <%- include('includes/head') %>
-<link rel="stylesheet" href="/styles/form.css">
+<link rel="stylesheet" href="/styles/admin.css">
 <link rel="stylesheet" href="/styles/title-display.css">
 <title>Admin area</title>
 </head>
@@ -27,14 +27,19 @@
           <div class="title admin-title">
             <details class="title-name" open>
               <summary>
-                <%= title.displayName %>
+                <span><%= title.displayName %></span>
                 <div class="title-actions">
-                  <button class="btn admin-btn edit-btn">
+                  <button class="btn admin-btn edit-title">
+                    <p hidden><%= title._id %></p>
+                    <p hidden><%= title.description %></p>
                     <ion-icon name="create-outline"></ion-icon>
+                    <div class="etb-cover"></div>
                   </button>
-                  <button class="btn admin-btn delete-title">
-                    <ion-icon name="trash-outline"></ion-icon>
-                  </button>
+                  <form action="/titles/delete/<%= title._id %>" method="post" class="delete-title-form">
+                    <button class="btn admin-btn delete-title">
+                      <ion-icon name="trash-outline"></ion-icon>
+                    </button>
+                  </form>
                   <ion-icon class="name-arrow" name="caret-forward-outline"></ion-icon>
                 </div>
               </summary>
@@ -57,6 +62,12 @@
                 </p>
                 <% } %>
               </div>
+              <p class="title-id" hidden="hidden"><%= title.name %></p>
+              <p class="title-disp-name" hidden="hidden"><%= title.displayName %></p>
+              <button class="btn" id="create-chapter-btn" title="Adicionar capítulo">
+                <ion-icon name="add-circle-outline"></ion-icon>
+                <div id="ccb-cover"></div>
+              </button>
               <div class=" chapters">
                 <% if (title.chapters) { %>
                 <ul>
@@ -70,12 +81,15 @@
                       <p class="db-date" hidden><%= chapter.uploadDate %></p>
                     </div>
                     <div class="chap-actions">
-                      <button class="btn admin-btn edit-btn">
+                      <button class="btn admin-btn edit-chapter">
                         <ion-icon name="create-outline"></ion-icon>
+                        <div class="ecb-cover"></div>
                       </button>
-                      <button class="btn admin-btn delete-title">
-                        <ion-icon name="trash-outline"></ion-icon>
-                      </button>
+                      <form action="/files/delete/<%= chapter._id %>" method="post" class="delete-chapter-form">
+                        <button class="btn admin-btn delete-chapter">
+                          <ion-icon name="trash-outline"></ion-icon>
+                        </button>
+                      </form>
                     </div>
                   </li>
                   <% } %>

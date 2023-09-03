@@ -1,10 +1,13 @@
-/* || TITLES || */
-
 .titles {
     display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
     gap: 1em;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.home-titles {
+    flex-wrap: wrap;
+    align-items: center;
 }
 
 .title {
@@ -111,6 +114,74 @@
 .date {
     font-size: 1.7rem;
     color: var(--text-lighter);
+}
+
+/* ADMIN */
+
+#create-title-btn,
+#create-chapter-btn {
+    position: relative;
+    font-size: 3.5rem;
+    width: fit-content;
+    padding: 0;
+    height: 1em;
+}
+
+#create-chapter-btn {
+    font-size: 3rem;
+    margin-top: .3em;
+}
+
+#ctb-cover,
+#ccb-cover {
+    position: absolute;
+    top: -1.25em;
+    border-radius: 50%;
+    width: 1em;
+    height: 1em;
+    top: 0;
+}
+
+.admin-chapter {
+    display: flex;
+    justify-content: space-between;
+}
+
+.title-actions,
+.chap-actions {
+    display: flex;
+    align-self: center;
+    gap: .6em;
+}
+
+.title-actions>.name-arrow {
+    align-self: center;
+}
+
+.admin-btn {
+    display: flex;
+    border-radius: .5em;
+    padding: .2em;
+}
+
+.edit-title,
+.edit-chapter {
+    position: relative;
+}
+
+.etb-cover,
+.ecb-cover {
+    position: absolute;
+    height: 1.4em;
+    width: 1.4em;
+    top: 0;
+    left: 0;
+    border: .5em;
+}
+
+.delete-title,
+.delete-chapter {
+    background-color: var(--btn-danger);
 }
 
 /* || ANIMATIONS || */
