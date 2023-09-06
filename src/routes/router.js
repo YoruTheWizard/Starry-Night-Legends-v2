@@ -37,7 +37,8 @@ Router.use('/admin', Admin);
 Router.use('/titles', Titles);
 Router.use('/files', Files);
 
-// 404
+// Errors
+Router.get('/500', (req, res) => res.status(500).render('err/500'));
 Router.get('*', (req, res) => res.status(404).render('err/404'));
 
 module.exports = Router;

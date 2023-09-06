@@ -45,23 +45,40 @@ const queueRenderPage = num => {
 };
 
 // Show previous page
-document.querySelector('#prev-page').addEventListener('click', () => {
+const prevPage = () => {
   if (pageNum <= 1) return;
   pageNum--;
   queueRenderPage(pageNum);
-});
+};
+document.querySelector('#prev-page').addEventListener('click', prevPage);
 
 // Show next page
-document.querySelector('#next-page').addEventListener('click', () => {
+const nextPage = () => {
   if (pageNum >= pdfDoc.numPages) return;
   pageNum++;
   queueRenderPage(pageNum);
+};
+document.querySelector('#next-page').addEventListener('click', nextPage);
+
+// Change page with arrows
+document.addEventListener('keyup', evt => {
+  if (evt.key === 'ArrowRight') nextPage();
+  if (evt.key === 'ArrowLeft') prevPage();
 });
 
 // Jump to page
 pageNumInput.addEventListener('keyup', evt => {
-  if (evt.key === 'Enter') queueRenderPage(parseInt(pageNumInput.value));
-  else return;
+  if (evt.key === 'Enter') {
+    if (pageNumInput.value === '') {
+      pageNumInput.value = pageNum;
+      return;
+    }
+    let num = parseInt(pageNumInput.value),
+      max = parseInt(pageNumInput.getAttribute('max'));
+    if (num <= 0 || num > max) return;
+    pageNum = num;
+    queueRenderPage(pageNum);
+  } else return;
 });
 
 // Get document

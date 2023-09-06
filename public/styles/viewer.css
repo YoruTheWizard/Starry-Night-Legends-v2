@@ -18,14 +18,6 @@
   height: 1.2em;
 }
 
-#prev-page {
-  padding-left: .1em;
-}
-
-#next-page {
-  padding-right: .1em;
-}
-
 #page-info {
   padding-top: .1em;
 }
@@ -36,7 +28,7 @@
   font-size: 2rem;
   font-family: serif;
   text-align: center;
-  width: 2em;
+  width: 2.5em;
 }
 
 #page-num::-webkit-outer-spin-button,
@@ -49,4 +41,12 @@
   display: block;
   margin: 0 auto 3.45em;
   box-shadow: 0 0 8px rgba(0, 0, 0, .3);
+}
+
+#page-top {
+  font-size: 3rem;
+  position: fixed;
+  max-width: fit-content;
+  bottom: 2em;
+  right: 2em;
 }

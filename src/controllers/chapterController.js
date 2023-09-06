@@ -25,7 +25,7 @@ const readFile = async (req, res) => { // Reads one file and renders page
   try {
     const title = req.params.title, chapter = req.params.chapter;
     const chap = await Chapter.readByTitleAndNumber(title, chapter); // Getting data from database
-    return res.render('page', { chap });
+    return res.render('viewer', { chap });
   } catch (e) {
     res.status(404).render('err/404');
     console.error(e);
@@ -48,7 +48,6 @@ const getFile = async (req, res) => { // Gets file and returns from a read strea
 const readFileJSON = async (req, res) => { // Reads one file from database and returns as json
   const filename = req.params.filename;
   const file = await gfs.files.findOne({ filename }, (err, file) => { // Getting file from database
-
     if (err) return res.status(404).json({ err }); // Checking for errors
     else if (!file || file.length === 0) // Checking if file exists
       return res.status(404).json({ error: 'file not found' });
@@ -74,7 +73,7 @@ const upload = async (req, res) => { // Uploads a file into database
     return res.status(200).redirect('/admin');
   } catch (e) {
     console.error(e);
-    return res.status(500).render('err/500');
+    return res.redirect('/500');
   }
 };
 
@@ -88,8 +87,8 @@ const destroy = async (req, res) => { // Deletes a file
 
     return res.status(200).redirect('/admin');
   } catch (e) {
-    console.log(e);
-    return res.status(500).render('err/500');
+    console.error(e);
+    return res.redirect('/500');
   }
 };
 

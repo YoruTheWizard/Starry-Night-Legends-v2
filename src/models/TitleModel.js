@@ -18,7 +18,7 @@ class Title {
   adjust() {
     this.body.displayName = this.body.name;
     this.body.name =
-      this.body.name.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(' ', '-');
+      this.body.name.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replaceAll(' ', '-');
   }
 
   async create() {

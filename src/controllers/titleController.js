@@ -28,7 +28,7 @@ const create = async (req, res) => { // Creates a title in database
     return res.redirect('back');
   } catch (e) {
     console.error(e);
-    res.status(500).render('err/500');
+    return res.redirect('/500');
   }
 };
 
@@ -41,7 +41,7 @@ const update = async (req, res) => { // Updates a title in database
     return res.status(200).redirect('back');
   } catch (e) {
     console.error(e);
-    res.status(500).render('err/500');
+    return res.redirect('/500');
   }
 };
 
@@ -51,7 +51,7 @@ const destroy = async (req, res) => { // Deletes a title from database
     let title = await Title.delete(id);
     console.log(title);
 
-    let chapters = Chapter.readByTitleName(title.name);
+    let chapters = await Chapter.readByTitleName(title.name);
     console.log(chapters);
     if (chapters.length > 0) for (let chapter of chapters) {
       await Chapter.delete(chapter._id);
@@ -61,7 +61,7 @@ const destroy = async (req, res) => { // Deletes a title from database
     return res.status(200).redirect('back');
   } catch (e) {
     console.error(e);
-    res.status(500).render('err/500');
+    return res.redirect('/500');
   }
 };
 

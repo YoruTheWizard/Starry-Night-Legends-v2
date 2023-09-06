@@ -5,7 +5,7 @@
   --main-text: #000;
   --inner-text: #fff;
   --text-lighter: #aaa;
-  --btn-bg: #293af2;
+  --btn-bg: #1c28a6;
   --btn-shadow: #aaa;
   --dmb-shadow: #1515158e;
   --btn-danger: #a00;
@@ -58,9 +58,11 @@ body {
   color: var(--inner-text);
 }
 
-.header h1 {
-  font-size: 4rem;
+.home-link {
+  color: var(--inner-text);
+  font-size: 3rem;
   text-align: center;
+  text-decoration: none;
 }
 
 .content {
@@ -95,7 +97,7 @@ a {
   text-decoration: none;
 }
 
-a:hover {
+a:not(.home-link):hover {
   text-decoration: underline;
 }
 
