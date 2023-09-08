@@ -60,9 +60,12 @@ body {
 
 .home-link {
   color: var(--inner-text);
-  font-size: 3rem;
   text-align: center;
   text-decoration: none;
+}
+
+h1 {
+  font-size: 4rem;
 }
 
 .content {
@@ -72,6 +75,7 @@ body {
 }
 
 h2 {
+  font-size: 3rem;
   margin-bottom: .5em;
 }
 

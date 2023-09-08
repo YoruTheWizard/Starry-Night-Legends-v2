@@ -1,18 +1,18 @@
 .modal-display {
-  position: absolute;
+  position: fixed;
   background-color: #0003;
   width: 100%;
   height: 100%;
   top: 0;
-  z-index: 5;
+  z-index: 20;
 }
 
 .modal {
   position: absolute;
   background-color: var(--background);
   border-radius: 1em;
-  top: calc(50% - 10em);
-  left: calc(50% - 10em);
+  top: calc(50% - 9em);
+  left: calc(50% - 9em);
   padding: 1em;
 }
 

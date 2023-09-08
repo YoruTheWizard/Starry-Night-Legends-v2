@@ -3,10 +3,13 @@ let pdfDoc = null,
   pageIsRendering = false,
   pageNumIsPending = null;
 
-const scale = 1.3,
-  pageNumInput = document.querySelector('#page-num'),
+const pageNumInput = document.querySelector('#page-num'),
   canvas = document.querySelector('#pdf-render'),
   ctx = canvas.getContext('2d');
+
+// Setting scale
+let scale = 1.3;
+if (screen.width < 600) scale = 1;
 
 // Render the page
 const renderPage = num => {

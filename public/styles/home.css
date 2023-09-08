@@ -10,9 +10,33 @@
   letter-spacing: .05em;
   animation: typing 1.5s steps(10, end),
     blink-caret .75s step-end infinite;
-  width: 6.9em;
+  width: 6.62em;
 }
 
 .text-link:hover {
   color: var(--main-color);
+}
+
+/* || ANIMATIONS || */
+
+@keyframes typing {
+  from {
+    width: 0
+  }
+
+  to {
+    width: 6.62em
+  }
+}
+
+@keyframes blink-caret {
+
+  from,
+  to {
+    border-color: transparent
+  }
+
+  50% {
+    border-color: var(--main-text);
+  }
 }

@@ -30,7 +30,7 @@
         <div class="title">
           <details class="title-name">
             <summary>
-              <%= title.displayName %>
+              <span><%= title.displayName %></span>
               <ion-icon class="name-arrow" name="caret-forward-outline"></ion-icon>
             </summary>
           </details>
@@ -42,12 +42,18 @@
                   <ion-icon class="desc-arrow" name="caret-forward-outline"></ion-icon>
                 </summary>
               </details>
-              <p class="title-desc-p <%if(title.description === 'Sem descrição'){%>unavailable<%}%>" >
-                    <%= title.description %>
-                  </p>
-                </div>
-                <div class=" chapters">
-                <% if (title.chapters) { %>
+              <% if (title.description === '') { %>
+              <p class="title-desc-p unavailable">
+                Sem descrição
+              </p>
+              <% } else { %>
+              <p class="title-desc-p ">
+                <%= title.description %>
+              </p>
+              <% } %>
+            </div>
+            <div class=" chapters">
+              <% if (title.chapters) { %>
               <ul>
                 <% for (let chapter of title.chapters) { %>
                 <li class="chapter">

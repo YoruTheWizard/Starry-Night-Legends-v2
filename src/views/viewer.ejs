@@ -7,7 +7,7 @@
     <%- include('includes/header') %>
     <p id="file-id" hidden><%= chap.file %></p>
 
-    <div class="content">
+    <div class="content viewer">
 
       <div class="top-bar">
         <button class="btn" id="prev-page" title="Página anterior">
@@ -20,11 +20,8 @@
           <ion-icon name="chevron-forward-outline"></ion-icon>
         </button>
       </div>
-
-      <canvas id="pdf-render"></canvas>
-
-      <div id="page-top" class="btn" title="Topo da página">
-        <ion-icon name="caret-up-outline"></ion-icon>
+      <div id="viewer">
+        <canvas id="pdf-render"></canvas>
       </div>
     </div>
   </section>

@@ -42,11 +42,3 @@
   margin: 0 auto 3.45em;
   box-shadow: 0 0 8px rgba(0, 0, 0, .3);
 }
-
-#page-top {
-  font-size: 3rem;
-  position: fixed;
-  max-width: fit-content;
-  bottom: 2em;
-  right: 2em;
-}

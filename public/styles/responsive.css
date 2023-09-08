@@ -1,0 +1,118 @@
+@media (min-width: 320px) and (max-width: 767px) {
+
+  /* || MAIN || */
+  /* HEADER */
+  .header {
+    height: fit-content;
+    padding: .5em;
+  }
+
+  .home-link h1 {
+    font-size: 3.5rem;
+  }
+
+  /* Dark Mode Button */
+  .dark-mode-btn {
+    position: fixed;
+    width: fit-content;
+    height: 1.7em;
+    padding: .2em;
+    top: auto;
+    right: 1em;
+    bottom: 1em;
+    z-index: 10;
+  }
+
+  .dmb-icon {
+    transform: none !important;
+  }
+
+  /* CONTENT */
+  .content {
+    width: 90vw;
+    margin: 1em auto 3.5em;
+  }
+
+  div.text h2 {
+    text-align: center;
+    margin: 0 auto .2em;
+  }
+
+  /* Titles */
+  div.titles {
+    width: 90vw;
+    margin: 0;
+  }
+
+  .title {
+    max-width: 70vw;
+  }
+
+  .title .title-name,
+  .title .title-content {
+    max-width: 90vw;
+  }
+
+  .chapter .chapter-title {
+    width: 13.75em;
+  }
+
+  /* || ADMIN || */
+  div.modal {
+    max-height: 100vh;
+    overflow-y: auto;
+  }
+
+  form#admin-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1em;
+    width: 85%;
+    margin: auto;
+  }
+
+  #admin-form .btn {
+    margin: 0 auto;
+  }
+
+  /* || VIEWER || */
+  .viewer {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  div.top-bar {
+    justify-content: space-around;
+    width: 100vw;
+  }
+
+  #page-num {
+    padding: .1em;
+    height: fit-content;
+  }
+
+  #viewer {
+    width: 100vw;
+    overflow: auto;
+  }
+
+  canvas#pdf-render {
+    width: 100%;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 950px) {
+
+  .user-links {
+    background-color: var(--main-color);
+    position: sticky;
+    justify-content: space-evenly;
+    width: 100%;
+    padding: .2em 0;
+    top: 0;
+    left: 0;
+    z-index: 10;
+  }
+
+}
