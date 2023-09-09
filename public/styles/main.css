@@ -42,7 +42,6 @@ body {
   background-color: var(--main-color);
   justify-content: space-between;
   height: 5em;
-  padding-top: 1.3em;
 }
 
 .user-links {
@@ -59,13 +58,12 @@ body {
 }
 
 .home-link {
+  display: block;
   color: var(--inner-text);
   text-align: center;
   text-decoration: none;
-}
-
-h1 {
-  font-size: 4rem;
+  width: fit-content;
+  margin: .1em auto 0;
 }
 
 .content {

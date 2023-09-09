@@ -18,7 +18,11 @@ const allDetails = document.querySelectorAll('.title-name');
 function toggleOpenOneOnly(e) {
   if (this.open) {
     allDetails.forEach(deet => {
-      if (deet != this && deet.open) deet.open = false;
+      let sinopsys = deet.parentElement.children[1].children[0].children[0];
+      if (deet != this) {
+        if (deet.open) deet.open = false;
+        if (sinopsys.open) sinopsys.open = false;
+      }
     });
   }
 };
