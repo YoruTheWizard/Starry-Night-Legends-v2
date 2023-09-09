@@ -85,10 +85,10 @@ pageNumInput.addEventListener('keyup', evt => {
 });
 
 // Get document
-const url = ['http://localhost:3000'];
+const url = ['http://localhost:3000', 'https://starry-night-legends.onrender.com'];
 const fileId = document.querySelector('#file-id').textContent;
 
-fetch(`${url[0]}/files/getfile/${fileId}`)
+fetch(`${url[1]}/files/getfile/${fileId}`)
   .then(res => res.blob())
   .then(blob => {
     let fileURL = URL.createObjectURL(blob);
