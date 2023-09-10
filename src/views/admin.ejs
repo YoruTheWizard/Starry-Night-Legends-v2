@@ -52,13 +52,17 @@
                   </summary>
                 </details>
                 <% if (title.description === '') { %>
-                <p class="title-desc-p unavailable">
-                  Sem descrição
-                </p>
+                <div class="title-desc-text unavailable">
+                  <p>
+                    Sem descrição
+                  </p>
+                </div>
                 <% } else { %>
-                <p class="title-desc-p ">
-                  <%= title.description %>
-                </p>
+                <div class="title-desc-text">
+                  <p>
+                    <%= title.description %>
+                  </p>
+                </div>
                 <% } %>
               </div>
               <p class="title-id" hidden="hidden"><%= title.name %></p>

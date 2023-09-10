@@ -91,17 +91,32 @@
     text-decoration: underline;
 }
 
-.title-desc-p {
+.title-desc-text {
     max-height: 1em;
     padding-top: 1.3em;
-    overflow: hidden;
-    transition: all .5s;
+    transition: max-height .5s;
 }
 
-.title-desc[open]+.title-desc-p {
+.title-desc-text p {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .5s;
+}
+
+.title-desc[open]+.title-desc-text {
     max-height: 5em;
     margin-bottom: .3em;
-    transition: all .5s;
+    transition: max-height .5s;
+}
+
+.title-desc[open]~.title-desc-text>p {
+    max-height: 3.7em;
+    overflow: auto;
+    transition: max-height .5s;
+}
+
+.title-desc[open]~.title-desc-text.unavailable>p {
+    overflow: hidden;
 }
 
 /* CHAPTERS */

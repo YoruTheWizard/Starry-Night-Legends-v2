@@ -27,7 +27,7 @@ class Chapter {
   }
 
   static async readByTitleName(titleName) {
-    const chapters = await ChapterModel.find({ titleName });
+    const chapters = await ChapterModel.find({ titleName }).sort({ number: -1 });
     return chapters;
   }
 
