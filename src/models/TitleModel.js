@@ -38,6 +38,12 @@ class Title {
     return title;
   }
 
+  static async getDisplayName(titleName) {
+    if (typeof titleName !== 'string') return;
+    const title = await TitleModel.findOne({ name: titleName});
+    return title.displayName;
+  }
+
   async update(id) {
     if (typeof id !== 'string') return;
     this.adjust();

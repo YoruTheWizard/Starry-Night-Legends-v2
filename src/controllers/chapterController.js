@@ -1,6 +1,7 @@
 const path = require('path');
 const Grid = require('gridfs-stream');
 const Chapter = require('../models/ChapterModel');
+const Title = require('../models/TitleModel');
 // const Chapter = require(path.resolve(__dirname, '..', 'models', 'ChapterModel'));
 
 // GRIDFS
@@ -25,7 +26,9 @@ const readFile = async (req, res) => { // Reads one file and renders page
   try {
     const title = req.params.title, chapter = req.params.chapter;
     const chap = await Chapter.readByTitleAndNumber(title, chapter); // Getting data from database
-    return res.render('viewer', { chap });
+    const titleDispName = await Title.getDisplayName(title);
+
+    return res.render('viewer', { chap, titleDispName });
   } catch (e) {
     res.status(404).render('err/404');
     console.error(e);
