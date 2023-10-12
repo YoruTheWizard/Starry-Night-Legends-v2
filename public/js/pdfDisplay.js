@@ -88,7 +88,7 @@ pageNumInput.addEventListener('keyup', evt => {
 const url = ['http://localhost:3000', 'https://starrynightlegends.onrender.com'];
 const fileId = document.querySelector('#file-id').textContent;
 
-fetch(`${url[1]}/files/getfile/${fileId}`)
+fetch(`${url[0]}/files/getfile/${fileId}`)
   .then(res => res.blob())
   .then(blob => {
     let fileURL = URL.createObjectURL(blob);

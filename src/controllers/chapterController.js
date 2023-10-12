@@ -34,14 +34,12 @@ const readFile = async (req, res) => { // Reads one file and renders page
 
 const getFile = async (req, res) => { // Gets file and returns from a read stream
   try {
-    const id = req.params.fileId;
-    const file = await gfs.files.findOne({ id }); // Getting file from database
+    const id = new ObjectId(req.params.fileId);
+    const file = await gfs.files.findOne({ _id: id }); // Getting file from database
 
-    if (file.contentType === 'application/pdf') { // Checking if file is pdf
-      bucket.openDownloadStream(file._id).pipe(res);
-    } else {
-      return res.status(404).json({ err: 'Incorrect file type' });
-    }
+    if (file.contentType === 'application/pdf') // Checking if file is pdf
+      bucket.openDownloadStream(file._id).pipe(res); // Sending file to readstream
+    else return res.status(404).json({ err: 'Incorrect file type' });
   } catch (e) { console.error(e); }
 };
 

@@ -28,7 +28,7 @@ Titles.post('/delete/:id', title.destroy);
 const Files = express.Router();
 Files.get('/', chapter.readAll);
 Files.get('/json/:filename', chapter.readFileJSON);
-Files.get('/getfile/:fileid', chapter.getFile);
+Files.get('/getfile/:fileId', chapter.getFile);
 Files.post('/upload', mongo.upload.single('file'), chapter.upload);
 Files.post('/delete/:id', chapter.destroy);
 
