@@ -69,6 +69,14 @@ document.addEventListener('keyup', evt => {
   if (evt.key === 'ArrowLeft') prevPage();
 });
 
+// Change page with mouse click
+canvas.addEventListener('click', evt => {
+  let rect = evt.target.getBoundingClientRect(), half = evt.target.width / 2;
+  console.log(evt.target);
+  if (evt.clientX - rect.left < half) prevPage();
+  if (evt.clientX - rect.left > half) nextPage();
+});
+
 // Jump to page
 pageNumInput.addEventListener('keyup', evt => {
   if (evt.key === 'Enter') {

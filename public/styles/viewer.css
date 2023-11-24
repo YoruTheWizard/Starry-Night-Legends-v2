@@ -1,9 +1,13 @@
 .top-bar {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1em;
-  padding: 0 1em 1em;
+  display: grid;
+  grid-template-columns: max-content max-content max-content;
+  gap: 2em;
+  width: fit-content;
+  margin: 0 auto 2em;
+}
+
+.top-bar .btn {
+  align-self: center;
 }
 
 .btn {

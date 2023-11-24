@@ -80,11 +80,23 @@
   .viewer {
     margin-left: 0;
     margin-right: 0;
+    width: 100vw;
   }
 
   div.top-bar {
-    justify-content: space-around;
-    width: 100vw;
+    grid-template-columns: max-content max-content;
+    grid-template-rows: max-content max-content;
+    row-gap: 1em;
+  }
+
+  #page-info {
+    grid-column: 1 / span 2;
+  }
+
+  .top-bar>.btn {
+    justify-self: center;
+    width: fit-content;
+    grid-row: 2;
   }
 
   #page-num {
@@ -105,8 +117,9 @@
 @media (min-width: 320px) and (max-width: 950px) {
 
   .user-links {
-    background-color: var(--main-color);
     position: sticky;
+    background-color: var(--main-color);
+    font-size: 1.8rem;
     justify-content: space-evenly;
     width: 100%;
     padding: .2em 0;
